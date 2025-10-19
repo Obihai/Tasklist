@@ -10,9 +10,9 @@ class Task(models.Model):
     
     title = models.CharField(max_length=120)
     description = models.TextField(blank=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tasks")
     created_at = models.DateTimeField(auto_now_add=True)
-    due_date = models.DateField(null = True)
+    due_date = models.DateField(blank = True)
     completed = models.BooleanField(default=False)
 
     priority = models.IntegerField(choices=Priority.choices, default=Priority.HIGH)
